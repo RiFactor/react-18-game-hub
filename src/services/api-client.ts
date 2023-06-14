@@ -1,5 +1,7 @@
 import axios from "axios";
 
+// const API_KEY = process.env.REACT_APP_API_KEY // Question -- how do I store an environment variable
+
 export default axios.create({
     baseURL: "https://api.rawg.io/api", // online solution to add '/' at the start OR add 'CORS'
     params: {
