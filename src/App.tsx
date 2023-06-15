@@ -13,7 +13,7 @@ function App() {
       }}
       templateColumns={{
         base: "1fr", // 1 fraction i.e. 100%
-        lg: "200px 1fr", // 200px
+        lg: "200px 1fr", // 200px, take up 100% of remaining space
       }}
     >
       <GridItem area="nav">
