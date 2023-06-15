@@ -14,6 +14,7 @@ export interface Game {
   background_image: string;
   // Question -- review this w/ PlatformIconList.tsx
   parent_platforms: { platform: Platform }[];
+  metacritic: number;
 }
 
 interface FetchGamesResponse {
