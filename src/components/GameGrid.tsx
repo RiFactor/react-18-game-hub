@@ -18,11 +18,11 @@ const GameGrid = () => {
       <SimpleGrid // Question -- how do I resolve this key error
         columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
         padding={10}
-        spacing={10}
+        spacing={3}
       >
         {isLoading &&
-          skeletons.map((skeleton) => (
-            <GameCardContainer key={skeleton}>
+          skeletons.map((skeleton, index) => (
+            <GameCardContainer key={index}>
               <GameCardSkeleton />
             </GameCardContainer>
           ))}

@@ -7,7 +7,8 @@ interface IProps {
 
 const GameCardContainer = ({ children }: IProps) => {
   return (
-    <Box width="200px" borderRadius={10} overflow="hidden" height="300px">
+    // removing width is equivalent to setting to take up 100% of remaining space
+    <Box borderRadius={10} overflow="hidden" height="300px">
       {children}
     </Box>
   );

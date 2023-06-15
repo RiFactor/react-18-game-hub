@@ -11,16 +11,20 @@ function App() {
         base: `"nav" "main"`, // mobile devices
         lg: `"nav nav" "aside main"`, // 1024px // Question -- why are there two columns
       }}
+      templateColumns={{
+        base: "1fr", // 1 fraction i.e. 100%
+        lg: "200px 1fr", // 200px
+      }}
     >
       <GridItem area="nav">
         <NavBar />
       </GridItem>
       <Show above="lg">
-        <GridItem>
+        <GridItem paddingX={5} area="aside">
           <GenreList />
         </GridItem>
       </Show>
-      <GridItem>
+      <GridItem area="main">
         <GameGrid />
       </GridItem>
     </Grid>
