@@ -5,6 +5,7 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
+import PlatformSelector from "./components/PlatformSelector";
 
 function App() {
   // later use Redux / TanStack
@@ -34,6 +35,8 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
+        {/* Question -- tried using <Flex> and justifyContent / alignItems to left-align platform selector */}
+        <PlatformSelector />
         <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>
