@@ -11,9 +11,10 @@ import GetCroppedImageUrl from "../services/image-url";
 
 interface IProps {
   onSelectGenre: (genre: Genre) => void; // callback fn
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: IProps) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: IProps) => {
   const { data, error, isLoading } = useGenres();
 
   if (error) return null;
@@ -38,6 +39,11 @@ const GenreList = ({ onSelectGenre }: IProps) => {
                 // Question -- would it be easier to just pass the id?
                 onClick={() => onSelectGenre(genre)}
                 fontSize="lg"
+                fontWeight={
+                  selectedGenre && selectedGenre.name === genre.name
+                    ? "bold"
+                    : ""
+                }
               >
                 {genre.name}
               </Button>
