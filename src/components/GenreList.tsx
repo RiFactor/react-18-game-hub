@@ -1,8 +1,19 @@
-import { HStack, List, ListItem, Text, Image, Spinner } from "@chakra-ui/react";
-import useGenres from "../hooks/useGenres";
+import {
+  HStack,
+  List,
+  ListItem,
+  Image,
+  Spinner,
+  Button,
+} from "@chakra-ui/react";
+import useGenres, { Genre } from "../hooks/useGenres";
 import GetCroppedImageUrl from "../services/image-url";
 
-const GenreList = () => {
+interface IProps {
+  onSelectGenre: (genre: Genre) => void; // callback fn
+}
+
+const GenreList = ({ onSelectGenre }: IProps) => {
   const { data, error, isLoading } = useGenres();
 
   if (error) return null;
@@ -22,7 +33,14 @@ const GenreList = () => {
                 borderRadius={8}
                 src={GetCroppedImageUrl(genre.image_background)}
               />
-              <Text fontSize="lg">{genre.name}</Text>
+              <Button
+                variant="link"
+                // Question -- would it be easier to just pass the id?
+                onClick={() => onSelectGenre(genre)}
+                fontSize="lg"
+              >
+                {genre.name}
+              </Button>
             </HStack>
           </ListItem>
         ))}
