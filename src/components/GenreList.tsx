@@ -39,11 +39,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: IProps) => {
                 // Question -- would it be easier to just pass the id?
                 onClick={() => onSelectGenre(genre)}
                 fontSize="lg"
-                fontWeight={
-                  selectedGenre && selectedGenre.name === genre.name
-                    ? "bold"
-                    : ""
-                }
+                fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
               >
                 {genre.name}
               </Button>
