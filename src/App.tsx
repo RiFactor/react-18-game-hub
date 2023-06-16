@@ -27,8 +27,9 @@ function App() {
       <Show above="lg">
         <GridItem paddingX={5} area="aside">
           <GenreList
-            onSelectGenre={(genre) => setSelectedGenre(genre)}
+            // Question -- does this order matter
             selectedGenre={selectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
           />
         </GridItem>
       </Show>
