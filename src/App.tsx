@@ -6,10 +6,14 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
+import { Platform } from "./hooks/usePlatforms";
 
 function App() {
   // later use Redux / TanStack
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null); // Question -- why null and not something elese for an empty state
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  );
 
   return (
     <Grid
@@ -36,8 +40,13 @@ function App() {
       </Show>
       <GridItem area="main">
         {/* Question -- tried using <Flex> and justifyContent / alignItems to left-align platform selector */}
-        <PlatformSelector />
-        <GameGrid selectedGenre={selectedGenre} />
+        <PlatformSelector
+          onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+        />
+        <GameGrid
+          selectedGenre={selectedGenre}
+          selectedPlatform={selectedPlatform}
+        />
       </GridItem>
     </Grid>
   );
