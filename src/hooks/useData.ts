@@ -37,7 +37,7 @@ const useData = <T>(
         });
       return () => controller.abort();
     },
-    deps ? [...deps, endpoint, requestConfig] : [endpoint, requestConfig] // Question -- unsure how to resolve this error
+    deps ? [...deps, endpoint] : [endpoint] // Question -- unsure how to resolve this error
   );
   return { data, error, isLoading };
 };
