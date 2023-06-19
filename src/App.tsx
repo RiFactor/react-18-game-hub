@@ -42,6 +42,7 @@ function App() {
         {/* Question -- tried using <Flex> and justifyContent / alignItems to left-align platform selector */}
         <PlatformSelector
           onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+          selectedPlatform={selectedPlatform}
         />
         <GameGrid
           selectedGenre={selectedGenre}
