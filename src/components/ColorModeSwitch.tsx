@@ -6,11 +6,12 @@ const ColorModeSwitch = () => {
   return (
     <HStack>
       <Switch
+        // appears to default to md size which determines space taken w/ logo and search element
         colorScheme="green"
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
       />
-      <Text>Dark Mode</Text>
+      <Text whiteSpace="nowrap">Dark Mode</Text>
     </HStack>
   );
 };
