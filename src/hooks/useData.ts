@@ -38,7 +38,7 @@ const useData = <T>(
         });
       return () => controller.abort(); //Answered -  clean up function, triggered on next use effect
     },
-    deps ? [endpoint, requestConfig, ...deps] : [endpoint, requestConfig] // ONLINE - find solution --ignore eslint error; put ...deps at end of array
+    deps ? [...deps] : [] // ONLINE - find solution --ignore eslint error; put ...deps at end of array
   );
   return { data, error, isLoading };
 };
