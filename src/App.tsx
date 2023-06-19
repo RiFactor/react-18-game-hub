@@ -45,7 +45,7 @@ function App() {
       </Show>
       <GridItem area="main">
         {/* Online -- tried using <Flex> and justifyContent / alignItems to left-align platform selector */}
-        {/* <HStack spacing={5} paddingLeft={10} marginBottom={5}>
+        <HStack spacing={5} paddingLeft={10} marginBottom={5}>
           <PlatformSelector
             onSelectPlatform={(platform) =>
               setGameQuery({ ...gameQuery, platform })
@@ -56,9 +56,9 @@ function App() {
             onSort={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })}
             sortOrder={gameQuery.sortOrder}
           />
-        </HStack> */}
+        </HStack>
         {/* Alternate display -- didn't have an error so not needed */}
-        <Flex paddingLeft={5} marginBottom={5}>
+        {/* <Flex paddingLeft={5} marginBottom={5}>
           <Box marginX={5}>
             <PlatformSelector
               onSelectPlatform={(platform) =>
@@ -71,7 +71,7 @@ function App() {
             onSort={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })}
             sortOrder={gameQuery.sortOrder}
           />
-        </Flex>
+        </Flex> */}
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
