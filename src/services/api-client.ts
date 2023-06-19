@@ -1,10 +1,10 @@
 import axios from "axios";
 
-// const API_KEY = process.env.REACT_APP_API_KEY // Question -- how do I store an environment variable
+// const API_KEY = process.env.REACT_APP_API_KEY // Online -- how do I store an environment variable: https://vitejs.dev/guide/env-and-mode.html
 
 export default axios.create({
-    baseURL: "https://api.rawg.io/api", // online solution to add '/' at the start OR add 'CORS'
-    params: {
-        key:"35ff2db8a79e4a2e856db3b723d0b66b" // included in query string of each HTTP request
-    }
-})
+  baseURL: "https://api.rawg.io/api",
+  params: {
+    key: import.meta.env.VITE_API_KEY, // included in query string of each HTTP request
+  },
+});
