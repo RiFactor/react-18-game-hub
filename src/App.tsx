@@ -8,12 +8,15 @@ import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/usePlatforms";
 
+export interface IGameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+}
+
 function App() {
   // later use Redux / TanStack
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null); // ONline -- why null and not something elese for an empty state
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-    null
-  );
+  const [gameQuery, setGameQuery] = useState<IGameQuery>({} as IGameQuery);
+  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null); // ONline -- why null and not something elese for an empty state
 
   return (
     <Grid
@@ -33,21 +36,20 @@ function App() {
         <GridItem paddingX={5} area="aside">
           <GenreList
             // Answered - NOtes -- does this order matter
-            selectedGenre={selectedGenre}
-            onSelectGenre={(genre) => setSelectedGenre(genre)}
+            selectedGenre={gameQuery.genre}
+            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
           />
         </GridItem>
       </Show>
       <GridItem area="main">
         {/* Online -- tried using <Flex> and justifyContent / alignItems to left-align platform selector */}
         <PlatformSelector
-          onSelectPlatform={(platform) => setSelectedPlatform(platform)}
-          selectedPlatform={selectedPlatform}
+          onSelectPlatform={(platform) =>
+            setGameQuery({ ...gameQuery, platform })
+          }
+          selectedPlatform={gameQuery.platform}
         />
-        <GameGrid
-          selectedGenre={selectedGenre}
-          selectedPlatform={selectedPlatform}
-        />
+        <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
   );
