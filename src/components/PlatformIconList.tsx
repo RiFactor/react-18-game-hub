@@ -14,7 +14,7 @@ import { HStack, Icon, Text } from "@chakra-ui/react";
 import { IconType } from "react-icons";
 
 interface Props {
-  // Question -- review this w/ useGames.tsx
+  // Later -- review this w/ useGames.tsx
   platforms: Platform[];
 }
 

@@ -3,7 +3,7 @@ import { BsChevronDown } from "react-icons/bs";
 import usePlatforms, { Platform } from "../hooks/usePlatforms";
 
 interface IProps {
-  // Question  review -- diff between Types and Props
+  // Online  review -- diff between Types and Props
   onSelectPlatform: (platform: Platform) => void;
   selectedPlatform: Platform | null;
 }

@@ -10,7 +10,7 @@ import { Platform } from "./hooks/usePlatforms";
 
 function App() {
   // later use Redux / TanStack
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null); // Question -- why null and not something elese for an empty state
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null); // ONline -- why null and not something elese for an empty state
   const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
     null
   );
@@ -19,7 +19,7 @@ function App() {
     <Grid
       templateAreas={{
         base: `"nav" "main"`, // mobile devices
-        lg: `"nav nav" "aside main"`, // 1024px // Question -- why are there two columns
+        lg: `"nav nav" "aside main"`, // 1024px // Answered -- why are there two columns
       }}
       templateColumns={{
         base: "1fr", // 1 fraction i.e. 100%
@@ -32,14 +32,14 @@ function App() {
       <Show above="lg">
         <GridItem paddingX={5} area="aside">
           <GenreList
-            // Question -- does this order matter
+            // Answered - NOtes -- does this order matter
             selectedGenre={selectedGenre}
             onSelectGenre={(genre) => setSelectedGenre(genre)}
           />
         </GridItem>
       </Show>
       <GridItem area="main">
-        {/* Question -- tried using <Flex> and justifyContent / alignItems to left-align platform selector */}
+        {/* Online -- tried using <Flex> and justifyContent / alignItems to left-align platform selector */}
         <PlatformSelector
           onSelectPlatform={(platform) => setSelectedPlatform(platform)}
           selectedPlatform={selectedPlatform}

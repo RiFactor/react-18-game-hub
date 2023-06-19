@@ -4,7 +4,7 @@ interface IProps {
   score: number;
 }
 
-// Question -- how would I pass props directly w/o using IProps
+// Pass props directly w/o using IProps (score: number)
 const CriticScore = ({ score }: IProps) => {
   // color = foreground color only
   // high-score 65

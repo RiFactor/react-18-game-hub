@@ -36,10 +36,10 @@ const GenreList = ({ onSelectGenre, selectedGenre }: IProps) => {
               />
               <Button
                 variant="link"
-                // Question -- would it be easier to just pass the id?
+                // Review -- would it be easier to just pass the id?
                 onClick={() => onSelectGenre(genre)}
                 fontSize="lg"
-                // Question -- does the order of equivalence matter? e.g. "selectedGenre?.id === genre.id ?"
+                // Answered --  order of equivalence doesn't matter e.g. "selectedGenre?.id === genre.id ?"
                 fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
               >
                 {genre.name}

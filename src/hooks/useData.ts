@@ -11,6 +11,7 @@ const useData = <T>(
   endpoint: string,
   requestConfig?: AxiosRequestConfig,
   deps?: any[]
+  // deps = []
 ) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
@@ -18,7 +19,7 @@ const useData = <T>(
 
   useEffect(
     () => {
-      // Question -- review the controller and how it works
+      // Online -- review the controller and how it works
       const controller = new AbortController();
       setIsLoading(true);
       apiClient
@@ -35,9 +36,9 @@ const useData = <T>(
           setError(err.message);
           setIsLoading(false);
         });
-      return () => controller.abort();
+      return () => controller.abort(); //Answered -  clean up function, triggered on next use effect
     },
-    deps ? [...deps, endpoint] : [endpoint] // Question -- unsure how to resolve this error
+    deps ? [endpoint, requestConfig, ...deps] : [endpoint, requestConfig] // ONLINE - find solution --ignore eslint error; put ...deps at end of array
   );
   return { data, error, isLoading };
 };

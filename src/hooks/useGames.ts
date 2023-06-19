@@ -11,7 +11,7 @@ export interface Game {
   id: number;
   name: string;
   background_image: string;
-  // Question -- review this w/ PlatformIconList.tsx
+  // Later -- review this w/ PlatformIconList.tsx
   parent_platforms: { platform: Platform }[];
   metacritic: number;
   genres: string;
