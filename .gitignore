@@ -26,3 +26,4 @@ dist-ssr
 # is this needed or already ignored
 .env.local 
 .env
+.vercel
