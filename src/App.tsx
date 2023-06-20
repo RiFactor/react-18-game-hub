@@ -8,6 +8,7 @@ import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
+import GameHeading from "./components/GameHeading";
 
 export interface IGameQuery {
   genre: Genre | null;
@@ -48,18 +49,28 @@ function App() {
       </Show>
       <GridItem area="main">
         {/* Online -- tried using <Flex> and justifyContent / alignItems to left-align platform selector */}
-        <HStack spacing={5} paddingLeft={10} marginBottom={5}>
-          <PlatformSelector
-            onSelectPlatform={(platform) =>
-              setGameQuery({ ...gameQuery, platform })
-            }
-            selectedPlatform={gameQuery.platform}
-          />
-          <SortSelector
-            onSort={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })}
-            sortOrder={gameQuery.sortOrder}
-          />
-        </HStack>
+        <Box
+          paddingLeft={10}
+          justifyContent="left"
+          alignItems="start"
+          display="flex"
+          flexDirection="column"
+          gap={5}
+        >
+          <GameHeading gameQuery={gameQuery} />
+          <HStack spacing={5}>
+            <PlatformSelector
+              onSelectPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
+              selectedPlatform={gameQuery.platform}
+            />
+            <SortSelector
+              onSort={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })}
+              sortOrder={gameQuery.sortOrder}
+            />
+          </HStack>
+        </Box>
         {/* Alternate display -- didn't have an error so not needed */}
         {/* <Flex paddingLeft={5} marginBottom={5}>
           <Box marginX={5}>
