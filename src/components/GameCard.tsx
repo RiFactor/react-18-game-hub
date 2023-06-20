@@ -15,7 +15,11 @@ const GameCard = ({ game }: IProps) => (
       <Heading fontSize="2xl">{game.name}</Heading>
       <HStack justifyContent="space-between">
         <PlatformIconList
-          platforms={game.parent_platforms.map((p) => p.platform)}
+          platforms={
+            game?.parent_platforms
+              ? game.parent_platforms.map((p) => p.platform)
+              : [] // Question -- searching "club penguin" caused an error, is this fix ok?
+          }
         />
         {/* Design Smell: BED better name for metacritic score */}
         <CriticScore score={game.metacritic} />
