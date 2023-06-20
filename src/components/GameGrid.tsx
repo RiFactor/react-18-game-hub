@@ -16,33 +16,32 @@ const GameGrid = ({ gameQuery }: IProps) => {
     //, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
 
-  return (
-    <>
-      {error && <Text>{error}</Text>}
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        padding={10}
-        spacing={6}
-      >
-        {isLoading &&
-          skeletons.map((skeleton) => (
-            <GameCardContainer key={skeleton}>
-              <GameCardSkeleton />
-            </GameCardContainer>
-          ))}
-        {data
+  if (error) return <Text>{error}</Text>;
 
-          // .filter((game) => {
-          //   console.log(game?.genres, selectedGenre?.name);
-          //   selectedGenre === null ? game : game.genres === selectedGenre.name;
-          // })
-          .map((game) => (
-            <GameCardContainer key={game.id}>
-              <GameCard game={game} />
-            </GameCardContainer>
-          ))}
-      </SimpleGrid>
-    </>
+  return (
+    <SimpleGrid
+      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+      padding={10}
+      spacing={6}
+    >
+      {isLoading &&
+        skeletons.map((skeleton) => (
+          <GameCardContainer key={skeleton}>
+            <GameCardSkeleton />
+          </GameCardContainer>
+        ))}
+      {data
+
+        // .filter((game) => {
+        //   console.log(game?.genres, selectedGenre?.name);
+        //   selectedGenre === null ? game : game.genres === selectedGenre.name;
+        // })
+        .map((game) => (
+          <GameCardContainer key={game.id}>
+            <GameCard game={game} />
+          </GameCardContainer>
+        ))}
+    </SimpleGrid>
   );
 };
 
