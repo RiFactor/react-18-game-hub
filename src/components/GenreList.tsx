@@ -9,7 +9,6 @@ import {
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import GetCroppedImageUrl from "../services/image-url";
-import { wrap } from "framer-motion";
 
 interface IProps {
   onSelectGenre: (genre: Genre) => void; // callback fn
