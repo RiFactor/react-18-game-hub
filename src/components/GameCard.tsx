@@ -24,7 +24,7 @@ const GameCard = ({ game }: IProps) => (
         {/* Design Smell: BED better name for metacritic score */}
         <CriticScore score={game.metacritic} />
       </HStack>
-      <Heading fontSize="2xl">
+      <Heading fontSize="2xl" textAlign="left">
         {game.name}
         <Emoji rating={game.rating_top} />
       </Heading>
