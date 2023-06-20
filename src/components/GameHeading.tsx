@@ -8,7 +8,11 @@ interface IProps {
 const GameHeading = ({ gameQuery }: IProps) => {
   const heading = `
   ${gameQuery.platform?.name || ""} 
-    ${gameQuery.genre?.name || ""} 
+    ${
+      gameQuery.genre?.name === "Board Games" // avoids "Board Games Games"
+        ? "Board Game"
+        : gameQuery.genre?.name || ""
+    } 
   Games
   `;
 
