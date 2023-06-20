@@ -12,8 +12,7 @@ const GameCard = ({ game }: IProps) => (
   <Card>
     <Image src={GetCroppedImageUrl(game.background_image)} />
     <CardBody>
-      <Heading fontSize="2xl">{game.name}</Heading>
-      <HStack justifyContent="space-between">
+      <HStack justifyContent="space-between" marginBottom={3}>
         <PlatformIconList
           platforms={
             game?.parent_platforms
@@ -24,6 +23,7 @@ const GameCard = ({ game }: IProps) => (
         {/* Design Smell: BED better name for metacritic score */}
         <CriticScore score={game.metacritic} />
       </HStack>
+      <Heading fontSize="2xl">{game.name}</Heading>
     </CardBody>
   </Card>
 );
