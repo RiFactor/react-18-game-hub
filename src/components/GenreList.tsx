@@ -5,9 +5,11 @@ import {
   Image,
   Spinner,
   Button,
+  Heading,
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import GetCroppedImageUrl from "../services/image-url";
+import { wrap } from "framer-motion";
 
 interface IProps {
   onSelectGenre: (genre: Genre) => void; // callback fn
@@ -25,16 +27,23 @@ const GenreList = ({ onSelectGenre, selectedGenre }: IProps) => {
   return (
     <>
       {error && <p>{error}</p>}
+      <Heading fontSize="2xl" marginBottom={3} textAlign="start">
+        Genres
+      </Heading>
       <List>
         {data.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
             <HStack>
               <Image
+                objectFit="cover" // scales images retain aspect ratio (i.e. not squished)
                 boxSize="32px"
                 borderRadius={8}
                 src={GetCroppedImageUrl(genre.image_background)}
               />
               <Button
+                paddingStart={0}
+                whiteSpace="normal"
+                textAlign="left" // so that wrapped text isn't center aligned
                 variant="link"
                 // Review -- would it be easier to just pass the id?
                 onClick={() => onSelectGenre(genre)}
