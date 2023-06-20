@@ -9,27 +9,26 @@ interface IProps {
 const SearchInput = ({ onSearch }: IProps) => {
   const ref = useRef<HTMLInputElement>(null);
 
-  if (ref.current) {
-    // ref.prevent.Default();
-    // onSearch(ref.current.value);
-    // console.log(ref.current.value);
-  }
-
   return (
-    <InputGroup>
-      <InputLeftElement children={<BsSearch />} />
-      <Input
-        ref={ref}
-        onChange={(e) => {
-          e.preventDefault();
-          onSearch(e.target.value);
-        }}
-        borderRadius={20}
-        placeholder="Search games..."
-        variant="filled"
-      />
-      ;
-    </InputGroup>
+    <form // must wrap in form
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (ref.current) {
+          onSearch(ref.current.value); // check inside here
+        }
+      }}
+    >
+      <InputGroup>
+        <InputLeftElement children={<BsSearch />} />
+        <Input
+          ref={ref}
+          borderRadius={20}
+          placeholder="Search games..."
+          variant="filled"
+        />
+        ;
+      </InputGroup>
+    </form>
   );
 };
 
