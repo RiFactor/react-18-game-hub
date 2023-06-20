@@ -25,6 +25,7 @@ const useGames = (gameQuery: IGameQuery) =>
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
         ordering: gameQuery.sortOrder, // "ordering": need to match the term using in the rawg API https://api.rawg.io/docs/#operation/games_list
+        search: gameQuery.searchText,
       },
     },
     [gameQuery]
