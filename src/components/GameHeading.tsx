@@ -10,7 +10,7 @@ const GameHeading = ({ gameQuery }: IProps) => {
   ${gameQuery.platform?.name || ""} 
     ${
       gameQuery.genre?.name === "Board Games" // avoids "Board Games Games"
-        ? "Board Game"
+        ? "Board"
         : gameQuery.genre?.name || ""
     } 
   Games

@@ -9,7 +9,7 @@ interface IProps {
 
 const Emoji = ({ rating }: IProps) => {
   const emojiMap: { [key: number]: ImageProps } = {
-    3: { src: MehEmoji, alt: "Meh", boxSize: "25px" },
+    3: { src: MehEmoji, alt: "Meh", boxSize: "25px" }, // "goat simulator"
     4: { src: ThumbsUpEmoji, alt: "Great", boxSize: "25px" },
     5: { src: BullsEyeEmoji, alt: "Exceptional", boxSize: "35px" },
   };
