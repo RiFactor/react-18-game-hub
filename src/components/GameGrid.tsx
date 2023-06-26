@@ -16,7 +16,7 @@ const GameGrid = ({ gameQuery }: IProps) => {
     //, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
 
-  if (error) return <Text>{error}</Text>;
+  if (error) return <Text>{error.message}</Text>;
 
   return (
     <SimpleGrid
@@ -30,7 +30,7 @@ const GameGrid = ({ gameQuery }: IProps) => {
             <GameCardSkeleton />
           </GameCardContainer>
         ))}
-      {data
+      {data?.results
 
         // .filter((game) => {
         //   console.log(game?.genres, selectedGenre?.name);

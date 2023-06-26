@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"; // Error - if mistakenly import from Chakra rather than React Query
-import apiClient from "../services/api-client";
-import { FetchResponse } from "./useData";
+import apiClient, { FetchResponse } from "../services/api-client";
 import platforms from "../data/platforms";
+
 export interface Platform {
   id: number;
   name: string;
