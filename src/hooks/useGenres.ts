@@ -17,7 +17,7 @@ const useGenres = () =>
     queryFn: () =>
       // Question -- console log, debugging and then get scope but can't see 'block'; vid 24: [6min 44secs]
       // Question -- what does FetchResponse of Type Genre mean
-      // Question -- does this fn get called or does it wait for the 24hr stale time first
+      // Question -- does this fn get called or does it wait for the 24hr stale time first - think Mosh is saying it won't call til after 24 hrs
       apiClient.get<FetchResponse<Genre>>("/genres").then((res) => res.data),
     staleTime: 24 * 60 * 60 * 10000, // 24hrs
     initialData: { count: genres.length, results: genres }, // mitigate showing a loading spinner
