@@ -25,12 +25,12 @@ const GenreList = ({ onSelectGenre, selectedGenre }: IProps) => {
 
   return (
     <>
-      {error && <p>{error}</p>}
+      {/* {error && <p>{error}</p>} */}
       <Heading fontSize="2xl" marginBottom={3} textAlign="start">
         Genres
       </Heading>
       <List>
-        {data.map((genre) => (
+        {data?.results.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
             <HStack>
               <Image

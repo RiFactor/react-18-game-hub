@@ -1,3 +1,6 @@
+import { useQuery } from "@tanstack/react-query";
+import apiClient from "../services/api-client";
+import { FetchResponse } from "./useData";
 import genres from "../data/genres";
 
 export interface Genre {
@@ -9,6 +12,16 @@ export interface Genre {
 // List of genre seldom updates so take static data copy from backend
 // also help w/ UX by reducing number of spinners + loading states on page
 // Question -- can we cache this instead?
-const useGenres = () => ({ data: genres, error: null, isLoading: null });
+const useGenres = () =>
+  useQuery({
+    queryKey: ["genres"],
+    queryFn: () =>
+      // Question -- console log, debugging and then get scope but can't see 'block'; vid 24: [6min 44secs]
+      // Question -- what does FetchResponse of Type Genre mean
+      // Question -- does this fn get called or does it wait for the 24hr stale time first
+      apiClient.get<FetchResponse<Genre>>("/genres").then((res) => res.data),
+    staleTime: 24 * 60 * 60 * 10000, // 24hrs
+    initialData: { count: genres.length, results: genres }, // mitigate showing a loading spinner
+  });
 
 export default useGenres;
