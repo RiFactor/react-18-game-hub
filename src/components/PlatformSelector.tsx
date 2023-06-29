@@ -5,21 +5,24 @@ import usePlatforms, { Platform } from "../hooks/usePlatforms";
 interface IProps {
   // Online  review -- diff between Types and Props
   onSelectPlatform: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
+  selectedPlatformId?: number;
 }
 
-const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: IProps) => {
-  const { data, error } = usePlatforms();
+const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: IProps) => {
+  const { data: platforms, error } = usePlatforms(); // Mosh didn't give data an alias
+  const selectedPlatform = platforms?.results.find(
+    (p) => p.id === selectedPlatformId
+  );
 
   if (error) return null;
 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        {selectedPlatform ? selectedPlatform.name : "Platforms"}
+        {selectedPlatform?.name || "Platforms"}
       </MenuButton>
       <MenuList>
-        {data?.results.map((platform) => (
+        {platforms?.results.map((platform) => (
           <MenuItem
             onClick={() => onSelectPlatform(platform)}
             key={platform.id}

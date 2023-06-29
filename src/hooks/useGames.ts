@@ -22,8 +22,8 @@ const useGames = (gameQuery: IGameQuery) => {
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
-          genres: gameQuery?.genreId, // Question -- does this need the '?' - Mosh didn't include it
-          parent_platforms: gameQuery.platform?.id,
+          genres: gameQuery?.genreId, // Question -- does this need the '?' - Mosh didn't include it - is it b/c the value is undefined so that can be passed as a param?
+          parent_platforms: gameQuery?.platformId, // Question -- does this need the '?' - Mosh didn't include it
           ordering: gameQuery.sortOrder, // "ordering": need to match the term using in the rawg API https://api.rawg.io/docs/#operation/games_list
           search: gameQuery.searchText,
           page: pageParam,

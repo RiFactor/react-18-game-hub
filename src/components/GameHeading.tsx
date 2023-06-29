@@ -1,6 +1,7 @@
 import { Heading } from "@chakra-ui/react";
 import { IGameQuery } from "../App";
 import useGenres from "../hooks/useGenres";
+import usePlatforms from "../hooks/usePlatforms";
 
 interface IProps {
   gameQuery: IGameQuery;
@@ -9,9 +10,13 @@ interface IProps {
 const GameHeading = ({ gameQuery }: IProps) => {
   const { data: genres } = useGenres();
   const genre = genres?.results.find((g) => g.id === gameQuery.genreId);
+  const { data: platforms } = usePlatforms();
+  const platform = platforms?.results.find(
+    (p) => p.id === gameQuery.platformId
+  );
 
   const heading = `
-  ${gameQuery.platform?.name || ""} 
+  ${platform?.name || ""} 
     ${
       genre?.name === "Board Games" // avoids "Board Games Games"
         ? "Board"
