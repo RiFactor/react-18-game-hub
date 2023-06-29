@@ -15,12 +15,12 @@ export interface Genre {
 const useGenres = () =>
   useQuery({
     queryKey: ["genres"],
-    queryFn:
-      // Question -- console log, debugging and then get scope but can't see 'block'; vid 24: [6min 44secs]
-      // Question -- does this fn get called or does it wait for the 24hr stale time first - think Mosh is saying it won't call til after 24 hrs
-      apiClient.getAll,
+    queryFn: apiClient.getAll,
+    // Question -- console log, debugging and then get scope but can't see 'block'; vid 24: [6min 44secs]
+    // Question -- does this fn get called or does it wait for the 24hr stale time first - think Mosh is saying it won't call til after 24 hrs
+
     staleTime: 24 * 60 * 60 * 10000, // 24hrs
-    initialData: { count: genres.length, results: genres }, // mitigate showing a loading spinner
+    initialData: { count: genres.length, results: genres }, // mitigate showing a loading spinner // Question -- queryKey Erroring b/c of this line
   });
 
 export default useGenres;
