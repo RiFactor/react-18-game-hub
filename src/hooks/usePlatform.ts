@@ -1,12 +1,7 @@
-import { FetchResponse } from "../services/api-client";
-import { Platform } from "./usePlatforms";
+import usePlatforms from "./usePlatforms";
 
-interface IProps {
-  platforms?: FetchResponse<Platform>;
-  id?: number;
-}
-
-const usePlatform = ({ platforms, id }: IProps) => {
+const usePlatform = (id?: number) => {
+  const { data: platforms } = usePlatforms();
   return platforms?.results.find((p) => p.id === id);
 };
 

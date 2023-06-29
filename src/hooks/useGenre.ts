@@ -1,12 +1,9 @@
-import { FetchResponse } from "../services/api-client";
-import { Genre } from "./useGenres";
+import useGenres from "./useGenres";
 
-interface IProps {
-  genres?: FetchResponse<Genre>;
-  id?: number;
-}
+// best temp solution to accept optional param
+const useGenre = (id?: number) => {
+  const { data: genres } = useGenres();
 
-const useGenre = ({ genres, id }: IProps) => {
   return genres?.results.find((g) => g.id === id);
 };
 

@@ -13,7 +13,7 @@ interface IProps {
 const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: IProps) => {
   const { data: platforms, error } = usePlatforms(); // Mosh didn't give data an alias
 
-  const selectedPlatform = usePlatform({ platforms, id: selectedPlatformId });
+  const selectedPlatform = usePlatform(selectedPlatformId);
 
   // const selectedPlatform = useFindById<Platform>({
   //   platforms,
