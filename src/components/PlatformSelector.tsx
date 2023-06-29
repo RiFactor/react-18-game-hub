@@ -2,6 +2,7 @@ import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import usePlatforms, { Platform } from "../hooks/usePlatforms";
 import useFindById from "../hooks/useFindById";
+import usePlatform from "../hooks/usePlatform";
 
 interface IProps {
   // Online  review -- diff between Types and Props
@@ -12,10 +13,12 @@ interface IProps {
 const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: IProps) => {
   const { data: platforms, error } = usePlatforms(); // Mosh didn't give data an alias
 
-  const selectedPlatform = useFindById<Platform>({
-    platforms,
-    id: selectedPlatformId,
-  });
+  const selectedPlatform = usePlatform({ platforms, id: selectedPlatformId });
+
+  // const selectedPlatform = useFindById<Platform>({
+  //   platforms,
+  //   id: selectedPlatformId,
+  // });
 
   if (error) return null;
 
