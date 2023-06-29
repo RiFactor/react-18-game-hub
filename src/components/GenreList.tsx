@@ -12,10 +12,10 @@ import GetCroppedImageUrl from "../services/image-url";
 
 interface IProps {
   onSelectGenre: (genre: Genre) => void; // callback fn
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: IProps) => {
+const GenreList = ({ onSelectGenre, selectedGenreId }: IProps) => {
   const { data, error, isLoading } = useGenres();
 
   if (error) return null;
@@ -48,7 +48,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: IProps) => {
                 onClick={() => onSelectGenre(genre)}
                 fontSize="lg"
                 // Answered --  order of equivalence doesn't matter e.g. "selectedGenre?.id === genre.id ?"
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
               >
                 {genre.name}
               </Button>

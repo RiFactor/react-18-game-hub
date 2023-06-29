@@ -10,8 +10,11 @@ import { Platform } from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
 
+// undefined: absence of a value (unselected and can't unselected)
+// null: intentional absence of a value
+
 export interface IGameQuery {
-  genre: Genre | null;
+  genreId?: number; // equivalent to genre: number | undefined
   platform: Platform | null;
   sortOrder: string;
   searchText: string;
@@ -20,7 +23,7 @@ export interface IGameQuery {
 function App() {
   // later use Redux / TanStack
   const [gameQuery, setGameQuery] = useState<IGameQuery>({} as IGameQuery);
-  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null); // ONline -- why null and not something elese for an empty state
+  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null); // Online -- why null and not something elese for an empty state
 
   return (
     <Grid
@@ -42,8 +45,10 @@ function App() {
         <GridItem paddingX={5} area="aside">
           <GenreList
             // Answered - NOtes -- does this order matter
-            selectedGenre={gameQuery.genre}
-            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            selectedGenreId={gameQuery.genreId}
+            onSelectGenre={(genre) =>
+              setGameQuery({ ...gameQuery, genreId: genre.id })
+            }
           />
         </GridItem>
       </Show>
