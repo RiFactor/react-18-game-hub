@@ -1,4 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
+import ms from "ms";
 import { IGameQuery } from "../App";
 import APIClient, { FetchResponse } from "../services/api-client";
 import { Platform } from "./usePlatforms";
@@ -29,7 +30,7 @@ const useGames = (gameQuery: IGameQuery) => {
           page: pageParam,
         },
       }),
-    staleTime: 1 * 60 * 1000, // 1 minute
+    staleTime: ms("24h"),
     // keepPreviousData: true, // Question -- what does this do
     // NTS - must remember return keyword when using curly braces
     getNextPageParam: (lastPage, allPages) => {
