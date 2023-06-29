@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import APIClient from "../services/api-client";
 import genres from "../data/genres";
+import APIClient from "../services/api-client";
 
-const apiClient = new APIClient<Genre>("/genre");
+const apiClient = new APIClient<Genre>("/genres");
 
 export interface Genre {
   id: number;
@@ -18,9 +18,8 @@ const useGenres = () =>
     queryFn: apiClient.getAll,
     // Question -- console log, debugging and then get scope but can't see 'block'; vid 24: [6min 44secs]
     // Question -- does this fn get called or does it wait for the 24hr stale time first - think Mosh is saying it won't call til after 24 hrs
-
     staleTime: 24 * 60 * 60 * 10000, // 24hrs
-    initialData: { count: genres.length, results: genres }, // mitigate showing a loading spinner // Question -- queryKey Erroring b/c of this line
+    initialData: genres, // mitigate showing a loading spinner
   });
 
 export default useGenres;

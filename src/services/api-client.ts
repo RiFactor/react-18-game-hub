@@ -4,6 +4,7 @@ export interface FetchResponse<T> {
   count: number;
   next: string | null;
   results: T[];
+  // updating this will require the initialData values in hooks to be updated, so have downloaded the entire data obj in genres and platforms
 }
 
 const axiosInstance = axios.create({
