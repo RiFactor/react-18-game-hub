@@ -10,3 +10,9 @@ remember 'return' keyword when using {} in fns
 before removing code, find references (right click find references)
 
 Test build: Cmd + Shift + P: build and choose tsc and vite to see errors
+
+### Build
+
+```shell
+yarn run build
+```
