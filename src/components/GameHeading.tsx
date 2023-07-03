@@ -11,15 +11,12 @@ const GameHeading = ({ gameQuery }: IProps) => {
   const genre = useGenre(gameQuery.genreId);
   const platform = usePlatform(gameQuery.platformId);
 
-  const heading = `
-  ${platform?.name || ""} 
-    ${
-      genre?.name === "Board Games" // avoids "Board Games Games"
-        ? "Board"
-        : genre?.name || "" // Question -- is there a more concise way to write this?
-    } 
-  Games
-  `;
+  // avoids "Board Games Games", neater than string literals, undefined won't be joined
+  const heading = [
+    platform?.name,
+    genre?.name.replace(" Games", ""),
+    "Games",
+  ].join(" ");
 
   return (
     <Heading as="h1" fontSize="5xl">

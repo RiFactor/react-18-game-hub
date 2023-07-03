@@ -16,9 +16,10 @@ const GameCard = ({ game }: IProps) => (
       <HStack justifyContent="space-between" marginBottom={3}>
         <PlatformIconList
           platforms={
-            game?.parent_platforms
-              ? game.parent_platforms.map((p) => p.platform)
-              : [] // Question -- searching "club penguin" caused an error, is this fix ok?
+            game.parent_platforms?.map((p) => p.platform) || [] //Answered - better to update game interface w/ optional param (RAWG docs is wrong)
+            // game?.parent_platforms
+            //   ? game.parent_platforms.map((p) => p.platform)
+            //   : [] // Answered: fine -- searching "club penguin" caused an error, is this fix ok?
           }
         />
         {/* Design Smell: BED better name for metacritic score */}

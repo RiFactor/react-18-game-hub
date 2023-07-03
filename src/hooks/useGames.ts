@@ -10,9 +10,9 @@ export interface Game {
   name: string;
   background_image: string;
   // Later -- review this w/ PlatformIconList.tsx
-  parent_platforms: { platform: Platform }[];
+  parent_platforms?: { platform: Platform }[];
   metacritic: number;
-  genres: string;
+  genres: string; // until an error occurs, don't make this optional based on docs
   rating_top: number;
 }
 
