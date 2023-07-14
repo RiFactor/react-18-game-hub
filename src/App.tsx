@@ -1,26 +1,18 @@
-import { useState } from "react";
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import "./App.css";
-import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
+import GameHeading from "./components/GameHeading";
 import GenreList from "./components/GenreList";
+import NavBar from "./components/NavBar";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
-import GameHeading from "./components/GameHeading";
 
 // undefined: absence of a value (unselected and can't unselected)
 // null: intentional absence of a value
 
-export interface IGameQuery {
-  genreId?: number; // equivalent to genre: number | undefined
-  platformId?: number;
-  sortOrder: string;
-  searchText: string;
-}
-
 function App() {
   // later use Redux / TanStack
-  const [gameQuery, setGameQuery] = useState<IGameQuery>({} as IGameQuery);
+  // const [gameQuery, setGameQuery] = useState<IGameQuery>({} as IGameQuery);
   // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null); // Online -- why null and not something elese for an empty state
 
   return (
@@ -35,18 +27,12 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <NavBar
-          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
-        />
+        <NavBar />
       </GridItem>
       <Show above="lg">
         <GridItem paddingX={5} area="aside">
           <GenreList
-            // Answered - Notes -- does this order matter
-            selectedGenreId={gameQuery.genreId}
-            onSelectGenre={(genre) =>
-              setGameQuery({ ...gameQuery, genreId: genre.id })
-            }
+          // Answered - Notes -- does this order matter
           />
         </GridItem>
       </Show>
@@ -60,18 +46,10 @@ function App() {
           flexDirection="column"
           gap={5}
         >
-          <GameHeading gameQuery={gameQuery} />
+          <GameHeading />
           <HStack spacing={5}>
-            <PlatformSelector
-              onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platformId: platform.id })
-              }
-              selectedPlatformId={gameQuery.platformId}
-            />
-            <SortSelector
-              onSort={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })}
-              sortOrder={gameQuery.sortOrder}
-            />
+            <PlatformSelector />
+            <SortSelector />
           </HStack>
         </Box>
         {/* Alternate display -- didn't have an error so not needed */}
@@ -89,7 +67,7 @@ function App() {
             sortOrder={gameQuery.sortOrder}
           />
         </Flex> */}
-        <GameGrid gameQuery={gameQuery} />
+        <GameGrid />
       </GridItem>
     </Grid>
   );

@@ -1,21 +1,20 @@
 import {
+  Button,
   HStack,
+  Heading,
+  Image,
   List,
   ListItem,
-  Image,
   Spinner,
-  Button,
-  Heading,
 } from "@chakra-ui/react";
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import GetCroppedImageUrl from "../services/image-url";
+import useGameQueryStore from "./store";
 
-interface IProps {
-  onSelectGenre: (genre: Genre) => void; // callback fn
-  selectedGenreId?: number;
-}
+const GenreList = () => {
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
 
-const GenreList = ({ onSelectGenre, selectedGenreId }: IProps) => {
   const { data, error, isLoading } = useGenres();
 
   if (error) return null;
@@ -45,7 +44,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: IProps) => {
                 textAlign="left" // so that wrapped text isn't center aligned
                 variant="link"
                 // Review -- would it be easier to just pass the id?
-                onClick={() => onSelectGenre(genre)}
+                onClick={() => setSelectedGenreId(genre.id)}
                 fontSize="lg"
                 // Answered --  order of equivalence doesn't matter e.g. "selectedGenre?.id === genre.id ?"
                 fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}

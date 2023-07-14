@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import ms from "ms";
-import { IGameQuery } from "../App";
+import useGameQueryStore from "../components/store";
 import APIClient, { FetchResponse } from "../services/api-client";
 import { Platform } from "./usePlatforms";
 
@@ -16,7 +16,9 @@ export interface Game {
   rating_top: number;
 }
 
-const useGames = (gameQuery: IGameQuery) => {
+const useGames = () => {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
+
   // NTS - must remember return keyword when using curly braces
   return useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
