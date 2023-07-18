@@ -2,14 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import ms from "ms"; // error message for any, yarn add  --D @types/[package]  // for dev dependency only, types not needed for prod
 import genres from "../data/genres";
 import APIClient from "../services/api-client";
+import { Genre } from "../entities/Genre";
 
 const apiClient = new APIClient<Genre>("/genres");
 
-export interface Genre {
-  id: number;
-  name: string;
-  image_background: string;
-}
 // List of genre seldom updates so take static data copy from backend
 // also help w/ UX by reducing number of spinners + loading states on page
 // Question -- can we cache this instead?
