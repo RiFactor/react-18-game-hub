@@ -1,3 +1,4 @@
+import { Genre } from "./Genre";
 import { Platform } from "./Platform";
 
 export interface Game {
@@ -8,7 +9,7 @@ export interface Game {
   // Later -- review this w/ PlatformIconList.tsx
   parent_platforms?: { platform: Platform }[];
   metacritic: number;
-  genres: string; // until an error occurs, don't make this optional based on docs
+  genres: Genre[]; // until an error occurs, don't make this optional based on docs
   rating_top: number;
   description_raw: string;
 }

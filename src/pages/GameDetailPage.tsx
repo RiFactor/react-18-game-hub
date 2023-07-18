@@ -16,6 +16,17 @@ const GameDetailPage = () => {
     <>
       <Heading>{game.name}</Heading>
       <ExpandableText>{game.description_raw}</ExpandableText>
+      <Heading>Platforms</Heading>
+      {game.parent_platforms?.map((p) => (
+        <p key={p.platform.id}>{p?.platform.name}</p>
+        // Question -- do I need optional chaining
+      ))}
+      <Heading>Genres</Heading>
+      {game.genres.map((g) => (
+        <p key={g.id}>{g.name}</p>
+      ))}
+      <Heading>Metascore</Heading>
+      <Heading>Publishers</Heading>
     </>
   );
 };

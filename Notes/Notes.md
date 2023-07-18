@@ -86,3 +86,9 @@ yarn run build
   </GridItem>
 </Grid>
 ```
+
+CHECK:
+see object type e.g.
+.tostring()
+
+check 'return' keyword included - in functions and API calls
