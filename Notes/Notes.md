@@ -92,3 +92,5 @@ see object type e.g.
 .tostring()
 
 check 'return' keyword included - in functions and API calls
+
+Definition Term (DT), Definition Description (DD)

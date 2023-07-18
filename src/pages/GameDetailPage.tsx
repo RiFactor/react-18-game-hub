@@ -1,8 +1,9 @@
-import { Heading, Spinner } from "@chakra-ui/react";
+import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import CriticScore from "../components/CriticScore";
 import ExpandableText from "../components/ExpandableText";
 import useGame from "../hooks/useGame";
+import DefinitionItem from "../components/DefinitionItem";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -17,21 +18,29 @@ const GameDetailPage = () => {
     <>
       <Heading>{game.name}</Heading>
       <ExpandableText>{game.description_raw}</ExpandableText>
-      <Heading>Platforms</Heading>
-      {game.parent_platforms?.map((p) => (
-        <p key={p.platform.id}>{p.platform.name}</p>
-        // Answered -- don't use optional chaining until TS error occurs; client-side errors usually TS error (type is wrong)
-      ))}
-      <Heading>Genres</Heading>
-      {game.genres.map((g) => (
-        <p key={g.id}>{g.name}</p>
-      ))}
-      <Heading>Metascore</Heading>
-      <CriticScore score={game.metacritic} />
-      <Heading>Publishers</Heading>
-      {game.publishers.map((p) => (
-        <p key={p.id}>{p.name}</p>
-      ))}
+      <SimpleGrid columns={2} as="dl">
+        {/* dl for definition list, better organised HTML markup, same display */}
+        <DefinitionItem term="Platforms">
+          {game.parent_platforms?.map(({ platform }) => (
+            <Text key={platform.id}>{platform.name}</Text>
+            // Answered -- don't use optional chaining until TS error occurs; client-side errors usually TS error (type is wrong)
+          ))}
+        </DefinitionItem>
+        <DefinitionItem term="Metascore">
+          <CriticScore score={game.metacritic} />
+        </DefinitionItem>
+        <DefinitionItem term="Genres">
+          {game.genres.map((genre) => (
+            <Text key={genre.id}>{genre.name}</Text>
+          ))}
+        </DefinitionItem>
+        {/* Question -- is it better to wrap the whole section in a conditional to check if publishers exist rather than have an empty publishers list */}
+        <DefinitionItem term="Publishers">
+          {game.publishers?.map((publisher) => (
+            <Text key={publisher.id}>{publisher.name}</Text>
+          ))}
+        </DefinitionItem>
+      </SimpleGrid>
     </>
   );
 };
