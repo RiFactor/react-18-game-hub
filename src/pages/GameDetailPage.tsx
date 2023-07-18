@@ -1,7 +1,8 @@
-import { useParams } from "react-router-dom";
-import useGame from "../hooks/useGame";
-import { Button, Heading, Spinner, Text } from "@chakra-ui/react";
+import { Heading, Spinner, Text } from "@chakra-ui/react";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import ShowHideText from "../components/showHideText";
+import useGame from "../hooks/useGame";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -12,28 +13,21 @@ const GameDetailPage = () => {
 
   if (error || !game) throw error; // Question -- stuck on infinite load when slug doesn't exist
 
-  const showHideText = (text: string) => {
-    return (
-      <>
-        {showText ? text : text.slice(0, 300)}
-        <Button
-          onClick={() => {
-            setShowText(!showText);
-          }}
-        >
-          {showText ? "Less" : "More"}
-        </Button>
-      </>
-    );
-  };
-
   return (
     <>
       <Heading>{game.name}</Heading>
       <Text>
-        {game.description_raw.length > 300
-          ? showHideText(game.description_raw)
-          : game.description_raw.length}
+        {game.description_raw.length > 300 ? (
+          <ShowHideText
+            text={game.description_raw}
+            showText={showText}
+            setShowText={() => {
+              setShowText(!showText);
+            }}
+          />
+        ) : (
+          game.description_raw.length
+        )}
       </Text>
     </>
   );
