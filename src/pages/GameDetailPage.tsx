@@ -1,5 +1,6 @@
 import { Heading, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
+import CriticScore from "../components/CriticScore";
 import ExpandableText from "../components/ExpandableText";
 import useGame from "../hooks/useGame";
 
@@ -26,7 +27,11 @@ const GameDetailPage = () => {
         <p key={g.id}>{g.name}</p>
       ))}
       <Heading>Metascore</Heading>
+      <CriticScore score={game.metacritic} />
       <Heading>Publishers</Heading>
+      {game.publishers.map((p) => (
+        <p key={p.id}>{p.name}</p>
+      ))}
     </>
   );
 };

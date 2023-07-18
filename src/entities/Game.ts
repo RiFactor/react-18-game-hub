@@ -1,5 +1,6 @@
 import { Genre } from "./Genre";
 import { Platform } from "./Platform";
+import { Publisher } from "./Publishers";
 
 export interface Game {
   id: number;
@@ -12,4 +13,5 @@ export interface Game {
   genres: Genre[]; // until an error occurs, don't make this optional based on docs
   rating_top: number;
   description_raw: string;
+  publishers: Publisher[];
 }
