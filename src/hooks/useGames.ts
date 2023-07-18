@@ -14,15 +14,15 @@ const useGames = () => {
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
-          genres: gameQuery?.genreId, // Question -- does this need the '?' - Mosh didn't include it - is it b/c the value is undefined so that can be passed as a param?
-          parent_platforms: gameQuery?.platformId, // Question -- does this need the '?' - Mosh didn't include it
+          genres: gameQuery.genreId, // Answered gameQuery?.genreId checks whether gameQuery is defined, store.ts -> always defined so don't need optional chaining
+          parent_platforms: gameQuery.platformId,
           ordering: gameQuery.sortOrder, // "ordering": need to match the term using in the rawg API https://api.rawg.io/docs/#operation/games_list
           search: gameQuery.searchText,
           page: pageParam,
         },
       }),
     staleTime: ms("24h"),
-    // keepPreviousData: true, // Question -- what does this do
+    // keepPreviousData: true, // ToDo -- Docs online: look this up
     // NTS - must remember return keyword when using curly braces
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined;

@@ -14,7 +14,7 @@ const useGenres = () =>
     queryKey: ["genres"],
     queryFn: apiClient.getAll,
     // Question -- console log, debugging and then get scope but can't see 'block'; vid 24: [6min 44secs]
-    // Question -- does this fn get called or does it wait for the 24hr stale time first - think Mosh is saying it won't call til after 24 hrs
+    // Todo --Confirm: does this fn get called or does it wait for the 24hr stale time first - think Mosh is saying it won't call til after 24 hrs
     staleTime: ms("24h"),
     initialData: genres, // mitigate showing a loading spinner
   });

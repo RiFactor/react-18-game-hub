@@ -26,7 +26,7 @@ class APIClient<T> {
   getAll = (config: AxiosRequestConfig) => {
     return (
       axiosInstance
-        // Question -- what does FetchResponse of Type (T e.g.Genre) mean
+        // Answered --can be confusing but just liek passing a prop: Type (T e.g.Genre) mean
         .get<FetchResponse<T>>(this.endpoint, config)
         .then((res) => res.data)
     );

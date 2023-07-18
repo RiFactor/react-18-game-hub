@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <HomePage /> },
+      { index: true, element: <HomePage /> }, // can define specific error elements
       { path: "games/:slug", element: <GameDetailPage /> },
     ],
   },
