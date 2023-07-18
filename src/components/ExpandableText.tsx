@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
 interface IProps {
@@ -8,19 +8,30 @@ interface IProps {
 
 const ExpandableText = ({ children, limit = 300 }: IProps) => {
   const [expanded, setExpanded] = useState(false);
+  if (!children) return null;
+
+  if (children.length < limit) return <Text>children</Text>;
+
+  const croppedText = expanded
+    ? children
+    : children.substring(0, limit) + "...";
 
   return (
-    <>
-      {expanded ? children : children.slice(0, limit)}
+    <Text>
+      {croppedText}
       <Button
+        size="xs"
+        marginLeft={1}
+        fontWeight="bold"
+        colorScheme="yellow"
         // padding={2}
         onClick={() => {
           setExpanded(!expanded);
         }}
       >
-        {expanded ? "Less" : "More"}
+        {expanded ? "Show Less" : "Read More"}
       </Button>
-    </>
+    </Text>
   );
 };
 
