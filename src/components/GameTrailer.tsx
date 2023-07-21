@@ -13,10 +13,11 @@ const GameTrailer = ({ gameId }: IProps) => {
   if (isLoading) return null;
   if (error) throw error;
 
-  const first = data?.results[0];
+  const first = data?.results[0]; // avoid repetition
 
+  // if statement means don't need optional chaining now
   return first ? (
-    <video src={first.data[480]} poster={first?.preview} controls />
+    <video src={first.data[480]} poster={first.preview} controls />
   ) : null;
 };
 
