@@ -9,11 +9,9 @@ const NavBar = () => {
     // justifyContent="space-between" no longer needed w/ 3 elements
     <HStack padding="0.625rem" spacing={2}>
       <Link to="/">
-        <Image src={Logo} boxSize="60px" />
+        <Image src={Logo} boxSize="60px" objectFit="cover" />
       </Link>
-      <Link to="/">
-        <SearchInput />
-      </Link>
+      <SearchInput />
       <ColorModeSwitch />
     </HStack>
   );
