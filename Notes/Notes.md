@@ -97,7 +97,12 @@ Definition Term (DT), Definition Description (DD)
 
 New API call:
 
-1. hook
+1. entity - API docs for strutcure
+2. hook
+3. component
+4. render & console.log to see output
+
+Refactoring entities / reference: right-click to find all references then update
 
 Common Errors:
 File name needs to be .tsx
