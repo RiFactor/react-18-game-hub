@@ -1,6 +1,5 @@
-import { css } from "@emotion/react";
-import useScreenshots from "../hooks/useScreenshots";
 import { Image, SimpleGrid } from "@chakra-ui/react";
+import useScreenshots from "../hooks/useScreenshots";
 
 interface IProps {
   gameId: number;
@@ -15,22 +14,11 @@ const GameScreenshots = ({ gameId }: IProps) => {
 
   const array = data?.results;
 
-  // ChatGPT
-  const customGridStyles = css`
-    @media screen and (max-width: 767px) {
-      grid-template-columns: 1fr;
-    }
-
-    /* Larger screens: 2 columns */
-    @media screen and (min-width: 768px) {
-      grid-template-columns: 1fr 1fr;
-    }
-  `;
-
   return array ? (
-    <SimpleGrid columns={2} spacing={10} css={customGridStyles}>
-      {array.map((image: any) => (
-        <Image key={image.id} src={image.image} />
+    // medium or larger will have 2 columns
+    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={2}>
+      {array.map((file: any) => (
+        <Image key={file.id} src={file.image} />
       ))}
     </SimpleGrid>
   ) : null;
