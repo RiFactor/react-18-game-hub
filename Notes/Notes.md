@@ -94,3 +94,10 @@ see object type e.g.
 check 'return' keyword included - in functions and API calls
 
 Definition Term (DT), Definition Description (DD)
+
+New API call:
+
+1. hook
+
+Common Errors:
+File name needs to be .tsx

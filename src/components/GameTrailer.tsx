@@ -8,9 +8,9 @@ const GameTrailer = ({ gameId }: IProps) => {
   // Question - how do I write this prop inline
   const { data, error, isLoading } = useTrailers(gameId);
 
-  console.log(data); // Question -- tailer.ts
+  // console.log(data); // Question -- tailer.ts
 
-  if (isLoading) return null;
+  if (isLoading) return null; // Question -- is this b/c the rest of the page has loaded so just return empty componentx (check vid if explained there)
   if (error) throw error;
 
   const first = data?.results[0]; // avoid repetition
