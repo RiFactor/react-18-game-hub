@@ -1,4 +1,4 @@
-import { Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
+import { GridItem, Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import ExpandableText from "../components/ExpandableText";
 import useGame from "../hooks/useGame";
@@ -16,15 +16,18 @@ const GameDetailPage = () => {
   if (error || !game) throw error; // Answered: main.tsx -> ReactQuery defaults to 3 retries
 
   return (
-    <>
-      <SimpleGrid columns={{ base: 1, md: 2 }}>
+    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
+      {/* Box or GridItem render a div, roughly interchangeable */}
+      <GridItem>
         <Heading>{game.name}</Heading>
         <ExpandableText>{game.description_raw}</ExpandableText>
         <GameAttributes game={game} />
+      </GridItem>
+      <GridItem>
         <GameTrailer gameId={game.id} />
         <GameScreenshots gameId={game.id} />
-      </SimpleGrid>
-    </>
+      </GridItem>
+    </SimpleGrid>
   );
 };
 
