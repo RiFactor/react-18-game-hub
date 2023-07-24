@@ -1,3 +1,35 @@
 form {
   width: 100%;
 }
+
+/* @media screen and (max-width: 767px) {
+  // udpate as required
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+  }
+} */
+
+.bg {
+  background-color: orange;
+}
+
+@media screen and (max-width: 767px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    background-color: red; /* Temporary background color for testing */
+  }
+}
+
+/* Larger screens: 2 columns */
+@media screen and (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+    background-color: blue; /* Temporary background color for testing */
+  }
+}
