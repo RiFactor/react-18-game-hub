@@ -97,7 +97,7 @@ Definition Term (DT), Definition Description (DD)
 
 New API call:
 
-1. entity - API docs for strutcure
+1. entity - API docs for response schema
 2. hook
 3. component
 4. render & console.log to see output
