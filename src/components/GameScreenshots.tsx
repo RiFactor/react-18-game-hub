@@ -28,14 +28,12 @@ const GameScreenshots = ({ gameId }: IProps) => {
   `;
 
   return array ? (
-    // <div className="grid-container bg">
     <SimpleGrid columns={2} spacing={10} css={customGridStyles}>
       {array.map((image: any) => (
         <Image key={image.id} src={image.image} />
       ))}
     </SimpleGrid>
-  ) : // </div>
-  null;
+  ) : null;
 };
 
 export default GameScreenshots;
